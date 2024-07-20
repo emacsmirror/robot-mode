@@ -1,0 +1,104 @@
+Code: (lambda () (robot-mode)
+        (call-interactively 'robot-mode-align-region-or-defun))
+Point-Char: |
+
+Name: Alignment - empty
+=-=
+|
+=-=
+|
+=-=-=
+
+Name: Alignment - Keyword name only
+=-=
+*** Keywords ***
+|Keyword
+=-=
+*** Keywords ***
+|Keyword
+=-=-=
+
+Name: Alignment - Keyword contents
+=-=
+*** Test Cases ***
+|My Test
+    [Documentation]  Example test.    Another
+    ...  Something else.
+    Log       ${MESSAGE}
+    My Keyword    ${CURDIR}  ...
+=-=
+*** Test Cases ***
+|My Test
+    [Documentation]    Example test.    Another
+    ...                Something else.
+    Log                ${MESSAGE}
+    My Keyword         ${CURDIR}        ...
+=-=-=
+
+Name: Movement - end-of-defun
+Code: (lambda () (robot-mode)
+        (robot-mode-end-of-defun))
+=-=
+*** Test Cases ***
+|My Test
+    My Keyword    ${CURDIR}  ...
+
+Another Test
+    My Keyword
+=-=
+*** Test Cases ***
+My Test
+    My Keyword    ${CURDIR}  ...
+
+|Another Test
+    My Keyword
+=-=-=
+
+Name: Movement - beginning-of-defun
+Code: (lambda () (robot-mode)
+        (robot-mode-beginning-of-defun))
+=-=
+*** Test Cases ***
+My Test
+    My Keyword    ${CURDIR}  ...
+
+Another Test
+|    My Keyword
+=-=
+*** Test Cases ***
+My Test
+    My Keyword    ${CURDIR}  ...
+
+|Another Test
+    My Keyword
+=-=-=
+
+Name: Movement - beginning-of-defun - 2
+=-=
+*** Test Cases ***
+My Test
+    My Keyword    ${CURDIR}  ...
+
+|Another Test
+    My Keyword
+=-=
+*** Test Cases ***
+|My Test
+    My Keyword    ${CURDIR}  ...
+
+Another Test
+    My Keyword
+=-=-=
+
+Name: Add argument spacing
+Code: (lambda () (robot-mode)
+        (call-interactively 'robot-mode-add-argument))
+=-=
+*** Test Cases ***
+My Test
+    My Keyword|${CURDIR}  ...
+=-=
+*** Test Cases ***
+My Test
+    My Keyword    |${CURDIR}  ...
+=-=-=

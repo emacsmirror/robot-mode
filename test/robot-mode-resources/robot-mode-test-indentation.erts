@@ -1,0 +1,120 @@
+Code: (lambda () (robot-mode)
+        (setq indent-tabs-mode nil)
+        (indent-region
+        (point-min) (point-max)))
+
+Name: Indentation - Empty
+=-=
+=-=
+=-=-=
+
+Name: Indentation - Only whitespace
+=-=
+    
+=-=
+
+=-=-=
+
+Name: Indentation - Section headers
+=-=
+    *** Settings ***
+=-=
+*** Settings ***
+=-=-=
+
+Name: Indentation - Settings
+=-=
+*** Settings ***
+    Force Tags        tag
+=-=
+*** Settings ***
+Force Tags        tag
+=-=-=
+
+Name: Indentation - Variables
+=-=
+  *** Variables ***
+    ${MESSAGE}        Hello, world!
+=-=
+*** Variables ***
+${MESSAGE}        Hello, world!
+=-=-=
+
+Name: Indentation - Keyword
+=-=
+*** Keywords ***
+Keyword Name
+Keyword Item
+=-=
+*** Keywords ***
+Keyword Name
+    Keyword Item
+=-=-=
+
+Name: Indentation - Control structure
+=-=
+*** Keywords ***
+Conditionals keyword
+IF              ABC
+Set Variable    ${ARG}
+Set Variable    ${ARG}
+ELSE IF         CDE
+Set Variable    ${ARG2}
+ELSE
+Set Variable    ${ARG3}
+END
+=-=
+*** Keywords ***
+Conditionals keyword
+    IF              ABC
+        Set Variable    ${ARG}
+        Set Variable    ${ARG}
+    ELSE IF         CDE
+        Set Variable    ${ARG2}
+    ELSE
+        Set Variable    ${ARG3}
+    END
+=-=-=
+
+Name: Indentation - Toggling keyword contents
+Point-Char: |
+Code: (lambda () (robot-mode)
+        (call-interactively 'indent-for-tab-command))
+=-=
+*** Keywords ***
+Keyword Name
+    |Keyword Item
+=-=
+*** Keywords ***
+Keyword Name
+|Keyword Item
+=-=-=
+
+
+Name: Indentation - Toggling section headers
+=-=
+*** Test cases ***|
+=-=
+|*** Test cases ***
+=-=-=
+
+Name: Indentation - Toggling and retaining point
+Code: (lambda () (robot-mode)
+        (setq robot-mode-retain-point-on-indent t)
+        (call-interactively 'indent-for-tab-command))
+=-=
+*** Keywords ***
+Keyword Name
+    Keyword |Item
+=-=
+*** Keywords ***
+Keyword Name
+Keyword |Item
+=-=-=
+
+Name: Indentation - Toggling section headers while retaining point
+=-=
+*** Test cases ***|
+=-=
+*** Test cases ***|
+=-=-=
