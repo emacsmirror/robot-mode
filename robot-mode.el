@@ -304,7 +304,8 @@ Defuns are the steps of a keyword, test or task. This is used as
    (list (region-beginning) (region-end)))
 
   ;; Align only with spaces
-  (let ((align-to-tab-stop nil))
+  (let ((align-to-tab-stop nil)
+	(indent-tabs-mode nil))
     (align-regexp beg end "\\(\\s-\\s-+\\)"  1 robot-mode-argument-separator t))
   (let ((robot-mode-indent-toggle nil))
     (indent-region beg end)))
