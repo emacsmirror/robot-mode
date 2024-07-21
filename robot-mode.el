@@ -150,12 +150,12 @@ indenting a line. Otherwise move `point' always `back-to-indentation'."
   '(("^\\*.*" . font-lock-keyword-face)
     ("\\[\\sw+\\]" . font-lock-constant-face)
     ("^\\s-*\\(\\.\\.\\.\\)" . (1 font-lock-constant-face))
+    ("[@$&%]{\\([+-]?\\(0[xbo]\\)?[0-9.a-f]+\\|true\\|false\\|None\\|null\\|EMPTY\\|SPACE\\)}" . font-lock-constant-face)
     ("[@$&%]{[^}]*}" . font-lock-variable-name-face)
     ("^\\(Library\\|Resource\\|\\(Suite\\|Task\\|Test\\) \\(Setup\\|Teardown\\|Template\\|Timeout\\)\\|Variables\\):?\\s-*\\(.*?\\)\\(\\s-\\{2,\\}\\|$\\)"
      (1 font-lock-preprocessor-face) (4 font-lock-constant-face append))
     ("^\\(Documentation\\|\\(Force \\|Default \\)Tags\\|Metadata\\):?\\s-*\\(.*\\)"
      (1 font-lock-preprocessor-face) (3 font-lock-doc-face))
-    ("[@$&%]{\\([+-]?\\(0[xbo]\\)?[0-9.a-f]+\\|true\\|false\\|None\\|null\\|EMPTY\\|SPACE\\)}" . font-lock-constant-face)
     ("\\([$]{{[^}]*}}\\)\\|^\\s-+\\(IF\\|ELSE IF\\|ELSE\\|END\\|FOR\\|WHILE\\|TRY\\|EXCEPT\\|RETURN\\|BREAK\\|CONTINUE\\|FINALLY\\)\\(\\s-\\{2,\\}\\|$\\)"
      . font-lock-builtin-face)
     ("^[[:alnum:]]+.*$" . font-lock-function-name-face))
